@@ -1,0 +1,44 @@
+{% extends 'people/base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+  <script src="{% static 'people/js/people.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<h1 class="page-header">People</h1>
+
+  <!-- BUTTON TO TRIGGER THE ACTION -->
+<p>
+    <button type="button" class="btn btn-primary js-person-create" data-url="{% url 'person_create' %}">
+        <span class="glyphicon glyphicon-plus"></span>
+      New person
+    </button>
+</p>
+
+<table class="table" id="people-table">
+    <thead>
+    <tr>
+        <th>Author</th>
+        <th>Surname</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Mobile phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% include 'people/list_people/partial_people_list.html' %}
+    <tbody>
+</table>
+
+  <!-- THE MODAL WE WILL BE USING -->
+  <div class="modal fade" id="modal-person">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+

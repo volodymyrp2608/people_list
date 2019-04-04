@@ -1,0 +1,23 @@
+{% for person in people%}
+    <tr>
+        <td>{{person.user}}</td>
+        <td>{{person.surname}}</td>
+        <td>{{person.name}}</td>
+        <td>{{person.birthday}}</td>
+        <td>{{person.mobile_phone}}</td>
+        <td>
+            <button type="button" class="btn btn-warning btn-sm js-update-person"
+                    data-url="{% url 'person_update' person.id %}">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </button>
+            <button type="button" class="btn btn-danger btn-sm js-delete-person"
+                    data-url="{% url 'person_delete' person.id %}">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="7" class="text-center bg-warning">No people</td>
+    </tr>
+{%endfor%}

@@ -1,0 +1,18 @@
+{% load widget_tweaks %}
+
+<form method="delete" action="{% url 'api-people:people-rud' person.id %}" class="js-person-delete-form">
+  {% csrf_token %}
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm person deletion</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="lead">Are you sure you want to delete person <strong>{{ person.surname }} {{person.name}}</strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-danger">Delete person</button>
+  </div>
+</form>
